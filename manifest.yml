@@ -1,0 +1,12 @@
+---
+applications:
+- name: wildcard-route-terminator
+  buildpacks:
+  - https://github.com/cloudfoundry/nginx-buildpack.git
+  disk_quota: 64M
+  memory: 16M
+  instances: 3
+  routes:
+  - route: '*.((SYSTEM_DNS_ZONE_NAME))'
+  env:
+    SYSTEM_DNS_ZONE_NAME: ((SYSTEM_DNS_ZONE_NAME))
